@@ -1,4 +1,4 @@
-export const TodoItem = ({index,text}) => {
+export const TodoItem = ({id,index,text,delTodo}) => {
 
     return (
         <li className="todo-item">
@@ -7,7 +7,14 @@ export const TodoItem = ({index,text}) => {
                     <input type="checkbox" />
                 </span>
                 <p className="todo-item__part">{ text }</p>
-                <button className="todo-item__part">del</button>
+
+                <button
+                onClick={ () => delTodo(id) } 
+                className="todo-item__part"
+                >
+                  del
+                </button>
+
             </li>
     );
 };
