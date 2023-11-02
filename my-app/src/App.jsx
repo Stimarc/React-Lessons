@@ -1,13 +1,20 @@
 import { useState } from 'react';
 import './App.css';
-import { TodoList } from './components/TodoList';
+import { Main } from './components/Main';
+import { Header } from './components/Header';
+import { Footer } from "./components/Footer";
 
 const App =() =>{
   const [todoList,setTodoList] = useState([
-     { id: 1, text: 'todo1 some text...' },
-     { id: 2, text: 'todo2 some text...' },
-     { id: 3, text: 'todo3 some text...' },
-     { id: 4, text: 'todo4 some text...' },
+     { id: 1, text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit,' },
+     { id: 2, text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit,' },
+     { id: 3, text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit,' },
+     { id: 4, text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit,' },
+     { id: 5, text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit,' },
+     { id: 6, text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit,' },
+     { id: 7, text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit,' },
+     { id: 8, text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit,' },
+     
   ]);
 
   const delTodo = (id) => {
@@ -16,17 +23,19 @@ const App =() =>{
 
   return (
     <div className="App">
-     <h1>Todo list app</h1>
+      <Header />
+     <h1>My app</h1>
 
      <div className="todo-list-app">
 
-      <TodoList 
-      title="todo list 1" 
+      <Main 
       data={ todoList } 
       delTodo={ delTodo }
       />  
 
      </div>
+
+     <Footer />
     </div>
   );
 }

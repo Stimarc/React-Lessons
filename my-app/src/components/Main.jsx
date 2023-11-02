@@ -1,15 +1,14 @@
-import { TodoItem} from "./TodoItem";
+import { MainItem} from "./MainItem";
 
-export const TodoList = ({ title, data, delTodo }) => {
+export const Main = ({ data, delTodo }) => {
     return (
     <div>
-        <h2>{ title }</h2>
-        <ul className="todo-list">
+        <ul className="my-app">
 
          {
             data.map((todo, index) => {
                 return (
-                <TodoItem 
+                <MainItem 
                 key={todo.id} 
                 id={todo.id}
                 index={ index + 1 } 

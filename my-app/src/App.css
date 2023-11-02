@@ -1,27 +1,68 @@
 .App {
-  max-width: 700px;
+  max-width: 1200px;
   margin: 50px auto;
 }
-.todo-list-app{}
-.todo-list{}
 
-.todo-item{
+h1 {
+  color: rgb(247, 160, 11);
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  text-align: center;
+}
+
+.my-app{
+  text-align: center;
   display: flex;
-  align-items: center;
+  justify-content: space-around;
+  
+}
+
+.header {
+  display: flex;
+  justify-content: space-around;
+  background-color: #007bff;
+  color: white;
+  text-align: center;
   padding: 10px;
-  margin: 3px;
-  border: 2px solid silver;
+  font-size: 24px;
 }
-.todo-item__part{
-  margin-right: 10px;
+
+.header p {
+  
+  margin: 10px;
+  cursor: pointer;
 }
-.todo-item__part:last-child {
-margin-right: 0;
-margin-left: auto;
-cursor: pointer;
-font-weight: bold;
+
+.header p:hover {
+  color: orange;
+  transition: 0.5ms;
 }
-.todo-item__part:last-child:hover{
-  border-color: tomato;
-  color: tomato;
+
+.main-item{
+  margin: 15px;
+  border: 2px solid rgb(54, 201, 21);
+  border-radius: 15px;
+}
+
+.main-item__part{
+margin-right: 10px;
+}
+
+.main-item__part:last-child{
+  margin-right: 0;
+  margin-left: auto;
+  cursor: pointer;
+}
+
+.main-item__part:last-child:hover{
+  border-color: yellowgreen;
+  color: rgb(217, 0, 0);
+  font-weight: bold;
+}
+
+.footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  font-size: 14px;
 }
