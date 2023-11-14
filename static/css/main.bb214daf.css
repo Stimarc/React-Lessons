@@ -1,2 +1,0 @@
-*{box-sizing:border-box;margin:0;padding:0}body{font-family:sans-serif}li{list-style:none}button{background:transparent;border:2px solid silver;padding:10px 15px}.App{margin:50px auto;max-width:700px}.todo-item{align-items:center;border:2px solid silver;display:flex;margin:3px;padding:10px}.todo-item__part{margin-right:10px}.todo-item__part:last-child{cursor:pointer;font-weight:700;margin-left:auto;margin-right:0}.todo-item__part:last-child:hover{border-color:tomato;color:tomato}
-/*# sourceMappingURL=main.bb214daf.css.map*/
