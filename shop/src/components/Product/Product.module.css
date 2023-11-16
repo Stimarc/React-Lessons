@@ -1,0 +1,37 @@
+.product {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid silver;
+    margin: 5px;
+    width: 300px;
+}
+.thumbnail {
+    width: 100%;
+    height: 200px;
+}
+.thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+}
+.title {
+    margin: 20px 0;
+}
+.priceBlock {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+.price {
+    font-weight: bold;
+}
+
+.butBtn:hover {
+  cursor: pointer;
+  background: green;
+  color: white;
+}

@@ -1,0 +1,22 @@
+.Container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.header {
+    padding: 20px;
+    background: black;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.main {
+
+}
+
+.footer {
+    
+}

@@ -1,14 +1,16 @@
 import { useState } from 'react';
-import './App.css';
 import { Products } from './components/Products';
+import { CartBtn ,Logo } from './components/commons/index.js';
+import { cart } from './components/cart';
+
 
 
 const App = () => {
 
    const products = [
     {id:1,title:"Product 1",price:10890,img:"p1.webp"},
-    {id:1,title:"Product 1",price:15720,img:"p2.webp"},
-    {id:1,title:"Product 1",price:9876,img:"p3.webp"},
+    {id:2,title:"Product 2",price:15720,img:"p2.webp"},
+    {id:3,title:"Product 3",price:9876,img:"p3.webp"},
    ];
 
    const [cart, setCart] = useState([]);
@@ -17,11 +19,15 @@ const App = () => {
     setCart([...cart,id]);
    }
 
+   console.log(cart);
+
   return (
-   <div className='App'>
+   <div className='Container'>
+    
     <div className="header">
-      <div className="logo">SUPER SHOP</div>
-      <div className="cart">{ cart.length }</div>
+     <Logo />
+     <CartBtn productCount={ cart.length }/>
+     
     </div>
     <div className="main">
 
@@ -31,8 +37,14 @@ const App = () => {
 
 
     <div className="footer"></div>
+
+<cart/>
+
    </div>
+
   );
+
+  
 }
 
 export default App;
