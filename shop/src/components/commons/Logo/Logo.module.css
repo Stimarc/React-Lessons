@@ -1,14 +1,12 @@
 .logo {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-weight: bold;
-    letter-spacing: 5px;
-    color: #ffd151;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
+  font-weight: bold;
+  letter-spacing: 5px;
+  color: #ffd151;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
 }
 
 .logo img {
-    width: 50px;
-
+  width: 50px;
 }
