@@ -1,28 +1,27 @@
 import { Product } from "../Product";
-import styles from './Products.module.css';
+import styles from "./Products.module.css";
 
-export const Products = ({ data ,addToCartHandler }) => {
-   const {products,content} = styles;
+export const Products = ({ data, addToCartHandler }) => {
+  const { products, content } = styles;
 
-    return (
-        <div className={products}>
-        <h3>Products</h3>
+  return (
+    <div className={ products }>
+      <h3>Products</h3>
 
-        <div className={content}>
+      <div className={ content }>
 
-            {
-                data.map(product => (
-                    <Product
-                        key={ product.id }
-                        data={ product }
-                        addToCartHandler={ addToCartHandler }
-                    /> 
-                  ))
-                }
-
-        </div>
-
+        {
+          data.map(product => (
+            <Product
+              key={ product.id } 
+              data={ product }
+              addToCartHandler={ addToCartHandler }
+            />
+          ))
+        }
+        
       </div>
-    );
-};
 
+    </div>
+  );
+};

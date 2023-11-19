@@ -1,27 +1,26 @@
-import { CartProduct } from '../CartProduct/CartProduct';
 import styles from './Cart.module.css';
+import { CartProduct } from './components';
 
-export const cart = () => {
-   const { cart ,header ,main ,footer }= styles;
+export const Cart = () => {
+  const { cart, header, main, footer } = styles;
 
-    return (
-        <div className={ cart }>
+  return (
+    <div className={ cart }>
+      
+      <div className={ header }>
+        <h4>Products</h4>
+      </div>
 
-            <div className={ header }>
-                <h4>Products</h4>
-            </div>
-            <div className={ main }>
+      <div className={ main }>
 
-            <CartProduct />
+        <CartProduct />
 
-            </div>
+      </div>
 
-            <div className={ footer }>
-                <span>total:</span>
-                <span>20000</span>
-            </div>
-     
-        </div>
-    );
+      <div className={ footer }>
+        <span>total:</span>
+        <span>20000</span>
+      </div>
+    </div>
+  );
 };
-

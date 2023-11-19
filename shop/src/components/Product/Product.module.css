@@ -1,37 +1,36 @@
 .product {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 10px;
+    padding: 20px;
     border: 1px solid silver;
     margin: 5px;
     width: 300px;
-}
-.thumbnail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .thumbnail {
     width: 100%;
     height: 200px;
-}
-.thumbnail img {
+  }
+  .thumbnail img {
     width: 100%;
     height: 100%;
     object-fit: contain;
     object-position: center;
-}
-.title {
+  }
+  .title {
     margin: 20px 0;
-}
-.priceBlock {
+  }
+  .priceBlock {
     display: flex;
     width: 100%;
     justify-content: space-between;
     align-items: center;
-}
-.price {
+  }
+  .price {
     font-weight: bold;
-}
-
-.butBtn:hover {
-  cursor: pointer;
-  background: green;
-  color: white;
-}
+  }
+  .buyBtn:hover {
+    cursor: pointer;
+    background: green;
+    color: white;
+  }
