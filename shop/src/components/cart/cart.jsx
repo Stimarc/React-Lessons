@@ -1,16 +1,17 @@
 import styles from './Cart.module.css';
-import { CartProduct } from './components';
+import {CartHeader, CartProduct } from './components';
 
-export const Cart = () => {
+export const Cart = ({data}) => {
   const { cart, header, main, footer } = styles;
+
+  console.log(data);
+
 
   return (
     <div className={ cart }>
       
-      <div className={ header }>
-        <h4>Products</h4>
-      </div>
-
+      <CartHeader className={header} />
+        
       <div className={ main }>
 
         <CartProduct />
