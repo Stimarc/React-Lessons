@@ -1,24 +1,24 @@
 import { Img } from '../../../commons';
-import styles from './CartProduct.module.css';
+import s from './CartProduct.module.css';
 import cs from './../../components/CartCommon.module.css';
 
-export const CartProduct = () => {
-  const { product, number, name, qty, price, cost, } = styles;
+export const CartProduct = ({qty,product,cost}) => {
+  const {img,price,title } = product;
 
   return (
-    <div className={product}>
-      <span className={`${number} ${cs.mr1} ${cs.number}`}>1</span>
+    <div className={s.product}>
+      <span className={`${s.number} ${cs.mr1} ${cs.number}`}>1</span>
 
-      <Img imgName="p1.webp" className={` ${cs.mr1} ${cs.img}`} />
+      <Img imgName={img} className={` ${cs.mr1} ${cs.img}`} />
 
-      <p className={`${name}${cs.mr1} ${cs.name}`}>Product 1</p>
-      <div className={`${qty} ${cs.mr1} ${cs.qty}`}>
+      <p className={`${s.name}${cs.mr1} ${cs.name}`}>{title}</p>
+      <div className={`${s.qty} ${cs.mr1} ${cs.qty}`}>
         <span>+</span>
-        <span>1</span>
+        <span>{qty}</span>
         <span>-</span>
       </div>
-      <span className={`${price} ${cs.mr1}${cs.price} ` }>1000</span>
-      <span className={`${cost} ${cs.cost}`}>1000</span>
+      <span className={`${price} ${cs.mr1}${cs.price} ` }>{price}</span>
+      <span className={`${s.cost} ${cs.cost}`}>{cost}</span>
     </div>
   );
 };

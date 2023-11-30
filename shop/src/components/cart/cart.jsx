@@ -3,8 +3,8 @@ import {CartHeader, CartProduct } from './components';
 
 export const Cart = ({data}) => {
   const { cart, header, main, footer } = styles;
-
-  console.log(data);
+  const products = Object.values(data);
+  
 
 
   return (
@@ -14,7 +14,17 @@ export const Cart = ({data}) => {
         
       <div className={ main }>
 
-        <CartProduct />
+        {
+          products.map(({qty,product,cost,},index) => (
+             <CartProduct
+               key={ product.id }
+               qty={qty}
+                product={ product}
+                cost={cost}
+                index={index} /> 
+          ))
+      }
+
 
       </div>
 

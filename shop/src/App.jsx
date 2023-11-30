@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Products } from './components/Products';
 import { CartBtn, Logo } from './components/commons';
 import { Cart } from './components/cart';
-import { getCartProductQty } from './utils';
+import { getCartObj, getCartProductQty } from './utils';
 
 const App = () => {
 
@@ -12,24 +12,19 @@ const App = () => {
     { id: 3, title: 'Product 3', price: 9876, img: 'p3.webp' },
   ];
 
-
-  const [openCart,setOpenCart] = useState(true);
+  const [openCart,setOpenCart] = useState(false);
   const [cart, setCart] = useState({});
   const [countCartItems, setCountCartItems] = useState(0)
 
+  
   const addToCart = (id) => {
-     let cartObj = {};
+    const product = products.find(prod => prod.id === id);
+     let cartObj = !cart[id] 
+     ? getCartObj(id,cart,0,product)
+     : getCartObj(id,cart,cart[id].qty,product);
 
-    if (!cart[id]) {
-      cartObj = {...cart, [id]: 1}; 
-    } else {
-      const prevCount = cart[id];
-      cartObj = {...cart,[id]: prevCount + 1};
-    }
-
-    getCartProductQty(cartObj);
+    setCountCartItems(getCartProductQty(cartObj));
     setCart(cartObj);
-    
   }
 
   return (
@@ -54,3 +49,4 @@ const App = () => {
 }
 
 export default App;
+
