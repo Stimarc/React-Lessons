@@ -1,0 +1,7 @@
+{
+    "todos": [
+        {"id":1, "body": "todo 1", "completed": false},
+        {"id":2, "body": "todo 2", "completed": false},
+        {"id":3, "body": "todo 3", "completed": false}
+    ]
+}

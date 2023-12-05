@@ -2,61 +2,33 @@ import { useEffect , useState } from 'react';
 
 
 const App = () => {
-  const [post, setPost] = useState({});
-  const [postId, setPostId] = useState(1);
-  const [inputData, setInputData] = useState(1);
-  const [comments,setComments] =useState([]);
+  const [count,setCount] = useState(0);
+  const [activate,setActivate] =useState(false);
+
 
 
   useEffect(() => {
-
-    (async () => {
-      console.log('useEffect');
-      const postRes = await fetch(`https://jsonplaceholder.typicode.com/posts/${ postId }`);
-      const post =await postRes.json();
-       setPost(post);
-
-       const commentsRes = await fetch(`https://jsonplaceholder.typicode.com/posts/${ postId }/comments`);
-       const comments = await commentsRes.json();
-       setComments(comments);
-
-       
-    })()
+    setCount(0);
+    const interval = setInterval(() => {
+      setCount(prev => prev + 1);
+    }, 1000);
     
 
-  }, [postId])
+    return () => {
+       clearInterval(interval);
+    }
 
-  
+    }, [activate])
 
- 
+
 
   return (
     <div className="App">
       <h1>Use Effect</h1>
-      <button onClick={() => setPostId(inputData)}>Load post( {String(inputData) })</button>
-      <input onChange={ e => setInputData(e.target.value)} type="number" placeholder='enter post id' />
+      <button onClick={() => setActivate(prev => !prev)} >activate/deactivate</button>
+      
 
-      <div className="post">
-        <h1 className='title'>{post.title}</h1>
-        <p className='text'>${post.body }</p>
-      </div>
-
-      <div className="comments">
-        {
-          comments.length
-          ?
-
-          comments.map(({name,email,body}) => (
-            <div className="comments">
-              <h4>{name}</h4>
-              <p>{email}</p>
-              <p>{body}</p>
-            </div>
-          ))
-          :
-          <p>Loading comments...</p>
-        }
-      </div>
+      { activate && <h3>{ count }</h3>    }
     </div>
   );
 }
