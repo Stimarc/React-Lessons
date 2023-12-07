@@ -1,49 +1,84 @@
-import  { useState, useEffect } from 'react';
+import React from 'react';
+import ToggleMenu from './components/ToggleMenu';
+import { useFetchPost } from "./hooks/useFetchPost";
+import useFormValidation from "./hooks/useFormValidation";
+import PopUp from './components/PopUp';
+
 
 const App = () => {
-  const [todos, setTodos] = useState([]);
+  const post = useFetchPost(1);
+  const { values, errors, handleChange, handleSubmit } = useFormValidation(
+    { name: '', email: '' },
+    validateForm
+  );
 
-  useEffect(() => {
+  function validateForm(values) {
+    let errors = {};
 
-     (async () => {
-      const todosRes = await fetch ('http://localhost:3000/todos');
-      const todos = await todosRes.json();
-      setTodos(todos);
+    if (!values.name.trim()) {
+      errors.name = 'Ім\'я обов\'язкове';
+    }
 
-      })()
+    if (!values.email.trim()) {
+      errors.email = 'Електронна пошта обов\'язкова';
+    } else if (!/\S+@\S+\.\S+/.test(values.email)) {
+      errors.email = 'Неправильний формат електронної пошти';
+    }
 
-    
-  }, []);
+    return errors;
+  }
 
   return (
     <div className="App">
-      <h2>Todo list from API</h2>
+      <ToggleMenu />
 
-      <div className="todo-app">
-        <div className="todo-add-form"></div>
-        <div className="todo-actions">
-          <label>
-          <input type="checkbox" name="" id="" />
-          no completed
-          </label>
-          
-        </div>
-
-        <div className="todo-list">
-          <h3 className="todo-list__title"></h3>
-
-          <ul className="todo-list__content">
-            {
-               todos.length
-              ? todos.map((todo, index) => <li key={todo.id}> {index + 1} {todo.body} </li>
-                )
-              : <p>Todo list is empty</p>
-            }
-          </ul>
-        </div>
+      <div className="post">
+        <h3 className="post__title">{post.title}</h3>
+        <p className="post__body">{post.body}</p>
       </div>
+
+      <form className="myForm" onSubmit={handleSubmit}>
+        <h3>User form</h3>
+
+        <div className="form-block">
+          <input
+            type="text"
+            name="name"
+            placeholder="Name"
+            value={values.name}
+            onChange={handleChange}
+          />
+          {errors.name && <p className="error">{errors.name}</p>}
+
+          <input
+            type="text"
+            name="email"
+            placeholder="Email"
+            value={values.email}
+            onChange={handleChange}
+          />
+          {errors.email && <p className="error">{errors.email}</p>}
+        </div>
+
+        <button type="submit">Send</button>
+      </form>
+
+      <PopUp title="my popup" text="popup text" />
+      <PopUp title="my popup2" text="popup text 2" />
+      <PopUp title="my popup3" text="popup text 3">
+        <button>ok</button>
+        <button>cancel</button>
+      </PopUp>
+
+      <PopUp 
+      title="my popup" 
+      text="popup text" 
+      sx={{boxShadow: '5px 5px 10px rgba(0,0,0,.3'}}
+      />
+
+
     </div>
   );
-}
+};
 
 export default App;
