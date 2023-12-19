@@ -1,42 +1,34 @@
-import { Route, Routes } from 'react-router-dom'; 
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
 import { Layout } from './components';
-import { 
-  AboutPage, 
-  ContactsPage, 
-  HomePage, 
-  NotFoundPage, 
-  PostsPage,
-  SinglePostPage, 
-} from './pages';
+import { Clients, Cards,} from './pages';
 
 const App = () => {
-  const posts = [
-    { id: 1, title: 'Post 1 title', text: 'Post 1 Text' },
-    { id: 2, title: 'Post 2 title', text: 'Post 2 Text' },
-    { id: 3, title: 'Post 3 title', text: 'Post 3 Text' },
-    { id: 4, title: 'Post 4 title', text: 'Post 4 Text' },
+  const cards = [
+    { id: 1, clientId: 1, cardNumber: '7434-7878-9012-3056' },
+    { id: 2, clientId: 2, cardNumber: '7376-5432-1008-7054' },
+    { id: 3, clientId: 3, cardNumber: '7486-5932-1508-9054' },
+    { id: 4, clientId: 4, cardNumber: '7036-5032-1908-1254' },
+  ];
+
+  const clients = [
+    { id: 1, name: 'John Doe', email: 'john.doe@gmail.com' },
+    { id: 2, name: 'Jane Smith', email: 'jane.smith@gmail.com' },
+    { id: 3, name: 'Frank Sinara', email: 'frank.sinara@gmail.com' },
+    { id: 4, name: 'Michale Lidug', email: 'michale.lidug@gmail.com' },
+
   ];
 
   return (
     <div className="container full-height">
       <Routes>
-
-        <Route path="/" element={ <Layout /> } >
-
-          <Route index element={ <HomePage /> } />
-
-          <Route path="posts" element={ <PostsPage data={ posts }/> } />
-          <Route path="posts/:id" element={ <SinglePostPage data={ posts }/> } />
-          <Route path="contacts" element={ <ContactsPage /> } />
-          <Route path="about" element={ <AboutPage /> } />
-
-          <Route path="*" element={ <NotFoundPage /> } />
-
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Cards cards={cards} />} />
+          <Route path="/clients" element={<Clients clients={clients} cards={cards} />} />
         </Route>
-        
       </Routes>
     </div>
   );
-}
+};
 
 export default App;
