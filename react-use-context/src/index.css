@@ -1,0 +1,32 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  padding: 10px 20px;
+  display: block;
+}
+
+.App {
+  max-width: 700px;
+  margin: 0 auto;
+}
