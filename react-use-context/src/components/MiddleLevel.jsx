@@ -1,11 +1,10 @@
-import React from 'react';
+import { BottomLevel } from "."
 
 export const MiddleLevel = () => {
-    return (
-        <div className="middle">
-            <h2>Middle level</h2>
-        </div>
-
-    );
-};
-
+  return (
+    <div className="middle">
+      <h2>Middle level</h2>
+      <BottomLevel />
+    </div>
+  )
+}

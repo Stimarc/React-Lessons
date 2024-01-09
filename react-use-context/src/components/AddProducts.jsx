@@ -1,12 +1,13 @@
 import React from 'react';
 import { useProductsContext } from '../hooks';
 
-export const AddProducts = () => {
-    const {setProductsData} =useProductsContext
-    return (
-        <button onClick={()=> setProductsData([...setProductsData,{id:5 ,title: 'products 5'}])}>
-            
-        </button>
-    );
+const AddProducts = () => {
+  const { productsData, setProductsData } = useProductsContext();
+  return (
+    <button onClick={ () => setProductsData([...productsData, { id: 5, title: 'product 5' }]) }>
+      add product
+    </button>
+  );
 };
 
+export default AddProducts;

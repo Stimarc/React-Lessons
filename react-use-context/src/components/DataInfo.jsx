@@ -1,7 +1,6 @@
 import { DataProductsInfo } from "./DataProductsInfo";
 
 export const DataInfo = () => {
-
     return (
         <div>
             <hr />
