@@ -1,0 +1,20 @@
+*{
+  margin: 0;
+  padding: 0;
+ box-sizing: border-box;
+}
+
+body {
+  font-size: 20px;
+}
+
+.container {
+  max-width: 700px;
+  margin: 20px auto;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 3px;
+  font-weight: bold;
+}
