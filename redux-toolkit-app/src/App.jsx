@@ -1,25 +1,18 @@
-import {InputField, TodoList, TodosCount} from './components'
+import React from 'react';
+import { Router, Route } from 'react-router-dom';
+import { UserDetails, UserList } from './users';
+import { TodoList } from './components';
+
 
 const App = () => {
-  const todosCount = 4;
- 
+    return (
+        <Router>
+            <Route path="/" exact component={TodoList} />
+            <Route path="/users" component={UserList} />
+            <Route path="/user/:userId" component={UserDetails} />
+        </Router>
+    );
 
-  return (
-    <div className="App">
-      <h1>Redux Toolkit</h1>
-
-      <InputField />
-
-      <div className="todoListBlock">
-      <h2>Todo list</h2>
-      <TodosCount count={todosCount} />
-      <TodoList />
-    </div>
-
-    </div>
-  );
-
-}
+};
 
 export default App;
-

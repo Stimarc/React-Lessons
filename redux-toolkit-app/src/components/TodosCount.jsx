@@ -1,4 +1,7 @@
-export const TodosCount = ({count}) => {
-    return <p>Todos count: {count} </p>
-};
+import { useSelector } from "react-redux";
 
+export const TodosCount = () => {
+  const todos = useSelector(state => state.todosData.todos);
+
+  return <p>Todos count: { todos.length }</p>
+};
