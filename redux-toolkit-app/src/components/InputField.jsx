@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { addTodo } from "../store/todoSlice";
+import { createTodo } from "../store/todoSlice";
 import { useState } from "react";
 
 export const InputField = () => {
@@ -7,7 +7,7 @@ export const InputField = () => {
   const [text, setText] = useState('');
 
   const addTodoHandler = () => {
-    dispatch(addTodo(text));
+    dispatch(createTodo(text));
     setText('');
   }
 
