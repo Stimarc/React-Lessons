@@ -1,63 +1,92 @@
-import { useState } from "react";
-import { Product } from "./components/Product";
-import { useAddGoodsMutation, useDelGoodMutation, useGetGoodsQuery } from "./redux";
+import './App.css';
+import { useForm } from 'react-hook-form';
+import { MyInput } from './components/MyInput';
 
 const App = () => {
-  const [count, setCount] = useState('');
-  const [text, setText] =useState('');
-  const { data = [], isLoading } = useGetGoodsQuery(count);
-  const [addGood] = useAddGoodsMutation();
-  const [delGood] = useDelGoodMutation();
 
-  const deleteHandler = async (productId) => {
-    await delGood({ id: productId }).unwrap();
-  };
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    clearErrors,
+    watch,
+    reset,
+    formState: { errors } 
+  } = useForm({
+      values: {
+        name: '',
+        age: 18,
+        phone: 380,
+        children: '',
+      }
+ 
 
-  const addHandler = async () => {
-    if (text) {
-      await addGood({name: text}).unwrap();
-      setText('');
-    }
-   
+    });
+
+  const submit = data => {
+    console.log('send valid form');
+    console.log(data);
+  }
+
+  const formError = data => {
+    console.log('invalid form');
+    console.log(data);
   }
 
   return (
-    <div className="container">
-      <h1>RTK Query</h1>
-      <div className="add-new">
-        <input
-         value={text}
-         onChange={e => setText(e.target.value)}
-         type="text" 
-         />
-        <button onClick={addHandler}>add</button>
-        </div>
-      <select 
-      value={count}
-      onChange={ e => setCount(e.target.value) }
-      className="select-count">
+    <div className="App">
+      <h1>React hook forms</h1>
 
-            <option value="">all</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-          </select>
+      <form onSubmit={handleSubmit(submit, formError)}>
+      <MyInput label="my input" name="myLabel"  register={register} regOpts={{ required: true, maxLength: 5 }}/>
 
-      {
-      isLoading && <h2>loading ...</h2>
-      }
+        <label>Name:
+          <input type="text" {...register('name', { required: 'Name is required !!!' })} />
+          {errors.name ? errors.name.message : false}
+          <br />
+        </label>
+        <label>Age:
+          <input type="number" aria-invalid={errors.age ? true : false}
+            {...register('age', { required: true,maxLength: 2 })}
+          />
+          <br />
+        </label>
+        <label>Phone:
+          <input type="number"
+            {...register('phone', 
+            { 
+              required: true, 
+              minLength: {value: 12, message: 'phone length min lenght 12 digit'},
+              maxLength: {value: 12, message: 'phone length max lenght 12 digit'},
+            }
+          )}
+          />
+          <br />
+        </label>
+        <label>Children quantity:
+          <input type="text"
+            {...register('children', { required: true, validate: {
+              isNumber: value => !Number.isNaN(+value) || 'Field must be a number !!!',
+              isPositive: value => value > 0 || 'Qty must be a possitive'
+            } })}
+          />
+          <br />
+        </label>
+        <button>Send form</button>
+        <button type='button' onClick={() => reset()}>Clear form</button>
+        <button type="button" onClick={() => clearErrors()}>Clear errors</button>
+        <hr />
+        <button type='button' onClick={() => setValue('name', 'Petro')}>set name "Petro"</button>
+      </form>
 
-      {
-      !isLoading && (
-        <div className="products">
-          {data.map((product) => (
-            <Product key={product.id} product={product} onDelete={deleteHandler} /> 
-          ))}
-        </div>
-      )
-      }
+       <div className="forms-data">
+
+        <p>name:{watch('name')}</p>
+        <p>age:{watch('age')}</p>
+       </div>
+
     </div>
   );
-};
+}
 
 export default App;
